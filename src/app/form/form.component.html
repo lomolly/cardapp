@@ -1,0 +1,49 @@
+
+<div class="container-div">
+    <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+        <div class="container">
+            <div class="back">
+                <a routerLink="/"><< Back</a>
+            </div>
+            <div class="title">
+                <h4>Enter card details</h4>
+            </div>
+            
+            <div class="content">
+                <h5>Card Number:</h5>
+                <input type="text"  formControlName="cardNo"/>
+                <div class="error" *ngIf="f.cardNo.touched || f.cardNo.invalid && submitted" class="invalid-feedback">
+                    <div class="error-text" *ngIf="f.cardNo.errors?.required">Card number is required</div>
+                    <div class="error-text" *ngIf="f.cardNo.errors?.minlength">Invalid Card Number length</div>
+                    <div class="error-text" *ngIf="f.cardNo.errors?.maxlength">Invalid Card Number length</div>
+                </div>
+            </div>
+            <div class="content">
+                <h5>Card Holder:</h5>
+                <input type="text"  formControlName="cardHolder"/>
+                <div class="error" *ngIf="f.cardHolder.touched || f.cardHolder.invalid && submitted" class="invalid-feedback">
+                    <div class="error-text" *ngIf="f.cardHolder.errors?.required">Card Holder is required</div>
+                </div>
+            </div>
+            <div class="content">
+                <h5>Expiry Date:</h5>
+                <input type="date"  formControlName="expiryDate"/>
+                <div class="error" *ngIf="f.expiryDate.touched || f.expiryDate.invalid && submitted" class="invalid-feedback">
+                    <div class="error-text" *ngIf="f.expiryDate.errors?.required">Expiry Date is required</div>
+                </div>
+            </div>
+            <div class="content">
+                <h5>CVV:</h5>
+                <input type="text" formControlName="cvv" />
+                <div class="error" *ngIf="f.cvv.touched || f.cvv.invalid && submitted" class="invalid-feedback">
+                    <div class="error-text" *ngIf="f.cvv.errors?.required">CVV is required</div>
+                    <div class="error-text" *ngIf="f.cvv.errors?.minlength">Invalid CVV length </div>
+                    <div class="error-text" *ngIf="f.cvv.errors?.maxlength">Invalid CVV length </div>
+                </div>
+            </div>
+            <div class="save-data">
+                <button type="submit">Save Card</button>
+            </div>
+        </div>
+    </form>
+</div>

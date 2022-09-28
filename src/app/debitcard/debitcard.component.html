@@ -1,0 +1,22 @@
+
+<div class="container">
+    <div class="container-content">
+        <div class="add-card">
+            <button type="button" routerLink="form">Add Card</button>
+        </div>
+        <div class="card-content" *ngFor="let card of cardList">
+            <img *ngIf="card.cardNo.substr(0,4) == 5399" src="../../assets/cards/mastercard-logo.png" />
+            <img *ngIf="card.cardNo.substr(0,4) == 3999 " src="../../assets/cards/verve-logo.png" />
+            <img *ngIf="card.cardNo.substr(0,4) == 4399"src="../../assets/cards/visa-logo.png" />
+            <div class="card-no">
+                <p *ngIf="accNo">{{card.cardNo}}</p>
+                <p *ngIf="hideAccNo">#### #### #### ####</p>
+                <img (click)="showAccount()" src="../../assets/icons/hidden.png" /> 
+            </div>
+            <div class="space-btwn"></div>
+            <p>{{card.cardHolder}}</p>
+            <p>{{card.expiryDate | date:'MM/YY'}}</p>
+            <p>{{card.cvv}}</p>
+        </div>
+    </div>
+</div>
