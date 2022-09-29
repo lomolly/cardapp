@@ -11,7 +11,7 @@
             
             <div class="content">
                 <h5>Card Number:</h5>
-                <input type="text"  formControlName="cardNo"/>
+                <input type="text" placeholder="XXXX-XXXX-XXXX-XXXX" formControlName="cardNo"/>
                 <div class="error" *ngIf="f.cardNo.touched || f.cardNo.invalid && submitted" class="invalid-feedback">
                     <div class="error-text" *ngIf="f.cardNo.errors?.required">Card number is required</div>
                     <div class="error-text" *ngIf="f.cardNo.errors?.minlength">Invalid Card Number length</div>

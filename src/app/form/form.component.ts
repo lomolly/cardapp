@@ -20,7 +20,7 @@ export class FormComponent implements OnInit {
 
   initializeForm() {
     this.cardForm = this.fb.group({
-      cardNo : ['', Validators.required],
+      cardNo : ['', [Validators.required]],
       cardHolder: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(16)]],
       expiryDate: ['', Validators.required],
       cvv: ['', [Validators.required, Validators.maxLength(3), Validators.minLength(3)]]
@@ -30,9 +30,16 @@ export class FormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    console.log(this.cardForm);
     if(this.cardForm.invalid) {
       return;
     }
+
+    // , Validators.pattern('^([0-9]{4})([0-9]{4})?([0-9]{4})?([0-9]{4})?$')
+    let data = Object.assign({}, this.cardForm.value);
+    
+    console.log('value', this.cardForm.value)
+    console.log('card no', this.cardForm.value.cardNo.replace('^([0-9]{4})([0-9]{4})?([0-9]{4})?([0-9]{4})?$'));
   }
 
 }
